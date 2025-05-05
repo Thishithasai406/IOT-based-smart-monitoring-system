@@ -1,0 +1,692 @@
+/* CSS Variables for Theme (Existing, unchanged) */
+:root {
+  --primary-color: #03223d; /* Dark blue */
+  --secondary-color: #4a5d4a; /* Muted green */
+  --card-bg: rgba(255, 255, 255, 0.495); /* Adjusted transparency for better readability */
+  --text-color: #384e45; /* Light teal */
+  --dark-bg: #121212;
+  --dark-text: #f0f0f0;
+  --accent-color: #1565c0; /* Blue accent for variety */
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  --transition: all 0.3s ease;
+}
+
+/* General Styles (Existing, unchanged) */
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  line-height: 1.7; /* Increased for readability */
+  overflow-x: hidden;
+  transition: var(--transition);
+  position: relative;
+}
+
+/* Background Video and Overlay (Existing, unchanged) */
+body:not(.login-page) {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  background-size: cover;
+  background-color: var(--secondary-color); /* Fallback color */
+}
+
+body:not(.login-page)::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  z-index: -2;
+  opacity: 0.3; /* Dull the video */
+}
+
+video#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  opacity: 0.3;
+  display: none;
+}
+
+body:not(.login-page) video#bg-video {
+  display: block;
+}
+
+/* Navbar (Existing, unchanged) */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  color: var(--dark-text);
+  padding: 20px 50px; /* Increased padding for whitespace */
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.navbar h1 {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.navbar div {
+  display: flex;
+  gap: 25px; /* Increased gap for cleaner spacing */
+  align-items: center;
+}
+
+/* Customize Navbar Links (Updated with unique colors for 6th link) */
+.navbar a {
+  color: var(--dark-text);
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.navbar a:nth-child(1) { /* Soil Types */
+  background-color: #0288d1; /* Green */
+}
+
+.navbar a:nth-child(2) { /* Rice Stages */
+  background-color: #0288d1; /* Purple */
+}
+
+.navbar a:nth-child(3) { /* Export CSV */
+  background-color: #0288d1; /* Orange */
+}
+
+.navbar a:nth-child(4) { /* District Info */
+  background-color: #0288d1; /* Light Blue */
+}
+
+.navbar a:nth-child(5) { /* Logout */
+  background-color: #d32f2f; /* Red */
+}
+
+.navbar a:nth-child(6) { /* Back to Dashboard */
+  background-color:#0288d1; /* Light Green */
+}
+
+.navbar a:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+#toggle-mode {
+  background-color: #6a1b9a; /* Purple */
+  color: var(--dark-text);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+#toggle-mode:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.dark-mode .navbar a:nth-child(1) {
+  background-color: #0288d1;
+}
+
+.dark-mode .navbar a:nth-child(2) {
+  background-color: #0288d1;
+}
+
+.dark-mode .navbar a:nth-child(3) {
+  background-color: #0288d1;
+}
+
+.dark-mode .navbar a:nth-child(4) {
+  background-color: rgba(2, 136, 209, 0.7);
+}
+
+.dark-mode .navbar a:nth-child(5) {
+  background-color: rgba(211, 47, 47, 0.7);
+}
+
+.dark-mode .navbar a:nth-child(6) {
+  background-color:#0288d1; /* Dark mode for Back to Dashboard */
+}
+
+.dark-mode #toggle-mode {
+  background-color: rgba(106, 27, 154, 0.7);
+}
+
+.dark-mode .navbar a:hover {
+  opacity: 1;
+}
+
+/* Dashboard Cards (Updated to avoid text color conflict) */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* Force single row with 4 columns */
+  gap: 40px; /* Increased gap for whitespace */
+  padding: 60px; /* Increased padding for clean layout */
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: var(--primary-color); /* Kept as is */
+}
+
+.card p {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-color); /* Kept as is */
+}
+
+.dark-mode .card {
+  background: rgba(31, 31, 31, 0.85); /* Adjusted to match light mode transparency */
+  color: var(--dark-text);
+}
+
+.dark-mode .card h2 {
+  color: var(--accent-color);
+}
+
+/* Alerts (Existing, unchanged) */
+.alert-card {
+  background-color: #fff3e0;
+  color: #fe5926;
+  animation: pulse 2s infinite;
+}
+
+.dark-mode .alert-card {
+  background-color: #5d4037;
+  color: #ffab91;
+}
+
+/* Graph Container (Existing, unchanged) */
+.graph-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px; /* Increased gap */
+  margin: 60px auto;
+  padding: 0 20px;
+  max-width: 1200px;
+}
+
+.graph-box {
+  width: 100%;
+  height: 300px;
+  background: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .graph-box {
+    width: 300px;
+  }
+}
+
+.dark-mode .graph-box {
+  background: rgba(31, 31, 31, 0.85);
+}
+
+/* Soil Types Page (Existing, unchanged) */
+.soil-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px; /* Increased gap */
+  padding: 60px; /* Increased padding */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.soil-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 25px;
+  max-width: 320px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.soil-card:hover {
+  transform: scale(1.02);
+}
+
+.soil-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.crop-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+}
+
+.crop-list.active {
+  max-height: 200px;
+  padding-top: 10px;
+}
+
+.crop-list h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+.crop-list ul {
+  margin: 5px 0 0 15px;
+  color: var(--text-color);
+}
+
+.dark-mode .soil-card {
+  background: rgba(34, 34, 34, 0.85);
+  color: var(--dark-text);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .soil-card img {
+  opacity: 0.9;
+}
+
+.dark-mode .crop-list h3 {
+  color: var(--accent-color);
+}
+
+/* District Info Page Styling (Existing, unchanged) */
+.district-container {
+  display: flex;
+  justify-content: center;
+  padding: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.district-card {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  transition: var(--transition);
+}
+
+.district-card h1 {
+  font-size: 28px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.district-card p {
+  font-size: 18px;
+  margin: 10px 0;
+  color: var(--text-color);
+}
+
+.district-card form {
+  margin: 20px 0;
+}
+
+.district-card select,
+.district-card button {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+}
+
+.district-card button {
+  background-color: var(--accent-color);
+  color: var(--dark-text);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.district-card button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.district-card .info {
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.district-card .info h3 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.district-card a {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.district-card a:hover {
+  text-decoration: underline;
+}
+
+.dark-mode .district-card {
+  background: rgba(31, 31, 31, 0.85);
+  color: var(--dark-text);
+}
+
+.dark-mode .district-card h1,
+.dark-mode .district-card .info h3 {
+  color: var(--accent-color);
+}
+
+.dark-mode .district-card .info {
+  background: rgba(44, 44, 44, 0.5);
+}
+
+.dark-mode .district-card select,
+.dark-mode .district-card button {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--dark-text);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Dark Mode (Existing, unchanged) */
+.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.dark-mode .navbar {
+  background: linear-gradient(90deg, #333, #444);
+}
+
+/* Login Page (Existing, unchanged) */
+.login-page {
+  background-color: var(--secondary-color);
+}
+
+.login-container {
+  max-width: 450px;
+  margin: 100px auto;
+  padding: 40px;
+  background: var(--card-bg);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.login-container input {
+  width: 90%;
+  padding: 12px;
+  margin: 15px 0;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  font-size: 16px;
+  color: var(--text-color);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.login-container button {
+  width: 95%;
+  padding: 12px;
+  background-color: var(--primary-color);
+  color: var(--dark-text);
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #0a2a4e; /* Darker shade of primary */
+}
+
+.dark-mode .login-container {
+  background: rgba(31, 31, 31, 0.85);
+}
+
+.dark-mode .login-container input {
+  background-color: rgba(44, 44, 44, 0.5);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .login-container button {
+  background-color: rgba(3, 34, 61, 0.8); /* Dark mode primary */
+}
+
+.dark-mode .login-container button:hover {
+  background-color: rgba(3, 34, 61, 0.9);
+}
+
+.error {
+  color: #d32f2f;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.dark-mode .error {
+  color: #ff6666;
+}
+
+/* Responsive (Existing, unchanged) */
+@media (max-width: 1024px) { /* Adjusted breakpoint for single row */
+  .dashboard-container {
+    grid-template-columns: 1fr; /* Stack vertically on smaller screens */
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+  }
+
+  .navbar div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .dashboard-container,
+  .soil-container,
+  .district-container {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .card, .soil-card, .district-card {
+    padding: 20px;
+  }
+
+  .login-container {
+    margin: 50px auto;
+    padding: 20px;
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Styling for alert box (Existing, unchanged) */
+#alert {
+  font-size: 16px;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Dry soil alert (Existing, unchanged) */
+.alert-dry {
+  background-color: #ffcccb;
+  color: #2ddc3c;
+  border: 1px solid #1dd94f;
+  box-shadow: 0 0 10px rgba(217, 53, 45, 0.3);
+}
+
+/* Wet soil alert (Existing, unchanged) */
+.alert-wet {
+  background-color: #d9f7d9;
+  color: #ef411e;
+  border: 1px solid #ee5c3b;
+  box-shadow: 0 0 10px rgba(40, 167, 69, 0.3);
+}
+
+/* Optimal moisture alert (Existing, unchanged) */
+.alert-normal {
+  background-color: #e2e3e5;
+  color: #6c757d;
+  border: 1px solid #6c757d;
+  box-shadow: none;
+}
+
+/* Modal background (Updated) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  right: 50px; /* Pop from right side */
+  top: 60%; /* Moved down to 40% */
+  width: 300px; /* Smaller width */
+  height: auto; /* Auto height */
+  background-color: rgba(0, 0, 0, 0.4); /* Black with transparency */
+  overflow: hidden; /* Removed scroller */
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+/* Modal content (Updated) */
+.modal-content {
+  background-color: #ff1d1d;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid #767575;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+  color: #ffffff; /* New text color for modal only */
+}
+
+/* Close button (Existing, unchanged) */
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dark-mode .modal {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.dark-mode .modal-content {
+  background-color: rgba(31, 31, 31, 0.85);
+  color: var(--dark-text); /* Dark mode text color */
+}
+
+/* Modal button styling (New) */
+.modal-button {
+  background-color: #ffffff;
+  color: #ff1d1d;
+  border: 1px solid #767575;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-button:hover {
+  background-color: #f0f0f0;
+}
+
+.dark-mode .modal-button {
+  background-color: #444;
+  color: var(--dark-text);
+  border-color: #666;
+}
+
+.dark-mode .modal-button:hover {
+  background-color: #555;
+}
+
+/* New: Adjust image size for rice stages carousel */
+.card-img-top {
+  max-height: 300px; /* Reduce to a reasonable height, adjust as needed */
+  max-width: 100%; /* Ensures it fits within the card width */
+  object-fit: cover; /* Maintains aspect ratio and crops if necessary */
+  border-top-left-radius: 10px; /* Matches the card's rounded corners */
+  border-top-right-radius: 10px;
+}
+
+.card {
+  overflow: hidden; /* Prevents image overflow beyond card boundaries */
+}
+
+/* Optional: Adjust for dark mode if needed */
+.dark-mode .card-img-top {
+  opacity: 0.9; /* Slight adjustment for visibility in dark mode */
+}
+
+/* Optional: Responsive image size adjustment */
+@media (max-width: 768px) {
+  .card-img-top {
+    max-height: 200px; /* Smaller on mobile */
+  }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>District Info</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dashboard-page">
+  <video id="bg-video" autoplay muted loop>
+    <source src="{{ url_for('static', filename='videos/farm-bg.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="district-container">
+    <div class="district-card">
+      <h1>🏞️ AP District Info</h1>
+      <p>Welcome, {{ session['user'] }}! <a href="{{ url_for('logout') }}">Logout</a></p>
+      <form method="POST">
+        <label for="district">Select District:</label>
+        <select name="district" id="district" onchange="this.form.submit()">
+          {% for district in districts.keys() %}
+            <option value="{{ district }}" {{ 'selected' if district == selected_district else '' }}>{{ district }}</option>
+          {% endfor %}
+        </select>
+        <button type="submit" name="fetch_soil" value="fetch">Fetch Daily Soil Data</button>
+      </form>
+      <div class="info">
+        {% if soil_data %}
+          <h3>Daily Soil Data ({{ soil_data.timestamp }})</h3>
+          <p>Moisture: {{ soil_data.moisture }}%</p>
+          <p>Temperature: {{ soil_data.temperature }}°C</p>
+          <p>pH: {{ soil_data.ph }}</p>
+        {% else %}
+          <p>Click to fetch daily soil data...</p>
+        {% endif %}
+      </div>
+      <div class="info">
+        <p>Soil Type: {{ districts[selected_district]['soil'] }}</p>
+        <p>Suitable Crops: {{ districts[selected_district]['crops'] }}</p>
+        <p>Watering: {{ districts[selected_district]['water'] }}</p>
+      </div>
+      <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>

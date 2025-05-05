@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Smart Farming</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body class="dashboard-page">
+  <video id="bg-video" autoplay muted loop>
+    <source src="{{ url_for('static', filename='videos/farm-bg.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="navbar">
+    <h1>SMART FARMING – IoT-Based Soil Monitoring</h1>
+    <div>
+      <a href="{{ url_for('soil_types') }}">Soil Types</a>
+      <a href="{{ url_for('rice_stages') }}">Rice Stages</a>
+      <a href="{{ url_for('export') }}">Export CSV</a>
+      <a href="{{ url_for('district_info') }}">District Info</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+      <button id="toggle-mode">Toggle Mode</button>
+    </div>
+  </div>
+
+  <div class="dashboard-container">
+    <div class="card" id="moisture-card">
+      <h2>Soil Moisture</h2>
+      <p id="moisture">--%</p>
+    </div>
+
+    <div class="card" id="temperature-card">
+      <h2>Temperature</h2>
+      <p id="temperature">-- °C</p>
+    </div>
+
+    <div class="card" id="ph-card">
+      <h2>Soil pH</h2>
+      <p id="ph">--</p>
+    </div>
+
+    <div class="card alert-card" id="alert-box">
+      <h2>Status</h2>
+      <p id="alert">Waiting for data...</p>
+    </div>
+  </div>
+
+  <div class="graph-container">
+    <div class="card graph-card">
+      <h2>Moisture Trend</h2>
+      <div id="moistureGraph" class="graph-box"></div>
+    </div>
+  
+    <div class="card graph-card">
+      <h2>Temperature Trend</h2>
+      <div id="temperatureGraph" class="graph-box"></div>
+    </div>
+  
+    <div class="card graph-card">
+      <h2>pH Trend</h2>
+      <div id="phGraph" class="graph-box"></div>
+    </div>
+  </div>
+
+  <div class="card" id="weather-card">
+    <h2>Weather</h2>
+    <p id="weather">--</p>
+  </div>
+  <div id="pumpStatusModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">×</span>
+      <h2 id="pumpStatusMessage">Switching off the pump...</h2>
+      <button id="okButton" class="modal-button">OK</button>
+    </div>
+  </div>
+  
+</body>
+</html>
