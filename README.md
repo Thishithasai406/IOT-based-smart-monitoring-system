@@ -123,7 +123,7 @@ smart-farming-main/
    ```
 
 4. **Access the application**
-   - Open your browser and go to `http://localhost:5000`
+   - Open your browser and go to `[http://localhost:5000](http://127.0.0.1:5000/dashboard)`
    - Default admin credentials: `admin` / `admin123`
 
 ---
@@ -218,5 +218,6 @@ Contributions are always welcome! If you spot a bug, have an idea for improvemen
 ---
 
 **Built with ❤️ for Smart Agriculture**
+
 
 
