@@ -114,7 +114,7 @@ smart-farming-main/
 
 2. **Install dependencies**
    ```bash
-   pip install flask
+   pip install -r requirements.txt
    ```
 
 3. **Run the application**
@@ -218,4 +218,5 @@ Contributions are always welcome! If you spot a bug, have an idea for improvemen
 ---
 
 **Built with ❤️ for Smart Agriculture**
+
 
