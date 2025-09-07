@@ -2,6 +2,10 @@
 
 A comprehensive IoT-based smart farming web application developed using **Python Flask** and **SQLite**. This system provides real-time soil monitoring, crop management, and agricultural insights for farmers.
 
+
+Check out the demo video here: [Watch Video](https://youtu.be/_4jg1taWC8E)
+
+
 ---
 
 ## 🚀 Features
@@ -157,6 +161,22 @@ smart-farming-main/
 - **Select District**: Choose from Andhra Pradesh districts
 - **Soil Data**: Fetch real-time soil conditions for selected district
 - **Crop Recommendations**: View suitable crops and watering needs
+  
+#### 💧 Soil Moisture Monitoring
+- **Dry Soil (<30%)**
+- Message: "Soil too dry. Auto-watering triggered!"
+- Action: Turns ON the water pump.
+- Alert style: alert-dry
+
+- **Wet Soil (>70%)**
+- Message: "Soil too moist. Consider pausing irrigation."
+- Action: Turns OFF the water pump.
+- Alert style: alert-wet
+
+- **Optimal Soil (30–70%)**
+- Message: "Soil moisture is optimal."
+- Action: No pump activity.
+- Alert style: alert-normal
 
 ---
 
@@ -174,6 +194,8 @@ The system simulates realistic IoT sensor data including:
 - Temperature readings (15-40°C)
 - pH values (5.0-9.0)
 - Weather conditions
+- Automatic Irrigation Alerts
+
 
 ### Customization
 - **Theme Colors**: Modify CSS variables in `style.css`
@@ -218,6 +240,7 @@ Contributions are always welcome! If you spot a bug, have an idea for improvemen
 ---
 
 **Built with ❤️ for Smart Agriculture**
+
 
 
 
